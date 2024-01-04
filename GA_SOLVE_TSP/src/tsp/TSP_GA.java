@@ -1,6 +1,8 @@
 package tsp;
 
 import java.util.Scanner;
+import gui.TSP_GUI;
+
 
 public class TSP_GA {
 
