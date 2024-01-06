@@ -1,15 +1,24 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
+import tsp.City;
+import tsp.GA;
+import tsp.Population;
 import tsp.TSP_GA;
+import tsp.TourManager;
 
 public class TSP_GUI {
 
@@ -18,13 +27,18 @@ public class TSP_GUI {
     private JTextField textFieldPopSize;
     private JTextField textFieldGenerations;
 
+    private Population pop;
+    private int numberOfCities;
+    private int populationSize;
+    private int generations;
+
     public TSP_GUI() {
         initialize();
     }
 
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
+        frame.setBounds(100, 100, 600, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
@@ -55,18 +69,115 @@ public class TSP_GUI {
         frame.getContentPane().add(textFieldGenerations);
         textFieldGenerations.setColumns(10);
 
+        // Add labels for initial and final distances
+        JLabel lblInitialDistance = new JLabel("Initial Distance:");
+        lblInitialDistance.setBounds(10, 670, 150, 25);
+        frame.getContentPane().add(lblInitialDistance);
+
+        JLabel lblFinalDistance = new JLabel("Final Distance:");
+        lblFinalDistance.setBounds(10, 700, 150, 25);
+        frame.getContentPane().add(lblFinalDistance);
+
+        // Add the custom JPanel for cities
+        CityPanel cityPanel = new CityPanel();
+        cityPanel.setBackground(Color.LIGHT_GRAY);
+        cityPanel.setBounds(10, 160, 500, 500); // Adjust the bounds as needed
+        frame.getContentPane().add(cityPanel);
+
         JButton btnRun = new JButton("Run GA");
         btnRun.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int numberOfCities = Integer.parseInt(textFieldCities.getText());
-                int populationSize = Integer.parseInt(textFieldPopSize.getText());
-                int generations = Integer.parseInt(textFieldGenerations.getText());
+                numberOfCities = Integer.parseInt(textFieldCities.getText());
+                populationSize = Integer.parseInt(textFieldPopSize.getText());
+                generations = Integer.parseInt(textFieldGenerations.getText());
 
-                TSP_GA.runGA(numberOfCities, populationSize, generations);
+                // Tạo ngẫu nhiên các thành phố
+                TourManager.clearCities(); // Xóa các thành phố cũ trước khi thêm mới
+                for (int i = 0; i < numberOfCities; i++) {
+                    City city = new City();
+                    TourManager.addCity(city);
+                }
+                // Khởi tạo quần thể
+                pop = new Population(populationSize, true);
+                cityPanel.repaint();
+                // System.out.println("Initial distance: " + pop.getFittest().getDistance());
+                lblInitialDistance.setText("Initial Distance:" + pop.getFittest().getDistance());
+                // Refresh the CityPanel to trigger the paintComponent method
+
+                Timer timer = new Timer(50, new ActionListener() {
+                    private int currentGeneration = 0;
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (currentGeneration < generations) {
+                            // Tiến hóa quần thể for one generation
+                            pop = GA.evolvePopulation(pop);
+                            // Refresh the CityPanel to trigger the paintComponent method
+                            cityPanel.repaint();
+                            currentGeneration++;
+                        } else {
+                            // Stop the timer after reaching the specified number of generations
+                            ((Timer) e.getSource()).stop();
+                            lblFinalDistance.setText("Final Distance:" + pop.getFittest().getDistance());
+                            JLabel Finish = new JLabel("Done!");
+                            Finish.setBounds(10, 710, 150, 25);
+                            frame.getContentPane().add(Finish);
+                        }
+                    }
+                });
+
+                // Start the timer
+                timer.start();
+
             }
         });
+
         btnRun.setBounds(160, 120, 120, 25);
         frame.getContentPane().add(btnRun);
+    }
+
+    // Add a custom JPanel for drawing cities
+    class CityPanel extends JPanel {
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+
+            // Draw circles for each city
+            int panelWidth = getWidth();
+            int panelHeight = getHeight();
+
+            if (pop != null) {
+                for (int i = 0; i < numberOfCities; i++) {
+                    City city = pop.getFittest().getCity(i);
+                    // Scale the city coordinates based on the panel dimensions
+                    int x = (int) (city.getX() * panelWidth / 500.0);
+                    int y = (int) (city.getY() * panelHeight / 500.0);
+                    // System.out.println(x);
+                    // System.out.println(y);
+                    // // System.out.println(panelHeight);
+                    // // System.out.println(panelWidth);
+                    // // System.out.println("----");
+                    g.setColor(Color.RED); // Set the color for the city circles
+                    g.fillOval(x, y, 10, 10); // Adjust the size of the circles as needed
+                }
+
+                for (int i = 0; i < numberOfCities - 1; i++) {
+                    City firstCity = pop.getFittest().getCity(i);
+                    City lastCity = pop.getFittest().getCity(i + 1);
+                    // Scale the city coordinates based on the panel dimensions
+                    int firstX = (int) (firstCity.getX() * panelWidth / 500.0);
+                    int firstY = (int) (firstCity.getY() * panelHeight / 500.0);
+                    int lastX = (int) (lastCity.getX() * panelWidth / 500.0);
+                    int lastY = (int) (lastCity.getY() * panelHeight / 500.0);
+
+                    // Draw the line connecting the last city to the first city
+                    g.setColor(Color.BLUE);
+                    g.drawLine(firstX + 5, firstY + 5, lastX + 5, lastY + 5);
+                }
+            }
+
+        }
     }
 
     public static void main(String[] args) {

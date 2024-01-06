@@ -25,4 +25,8 @@ public class TourManager {
         destinationCities.clear();
     }
 
+    
+
+
+
 }
