@@ -1,11 +1,12 @@
-package tsp.test;
+package genalgorithm.test;
 
 import java.util.Scanner;
+
+import genalgorithm.gen.GA;
+import genalgorithm.gen.Population;
 import gui.TSP_GUI;
 import map.City;
 import map.TourManager;
-import tsp.gen.GA;
-import tsp.gen.Population;
 
 public class TSP_GA {
 

@@ -1,4 +1,4 @@
-package tsp.gen;
+package genalgorithm.gen;
 
 import map.City;
 import map.Tour;
