@@ -1,8 +1,9 @@
-package tsp;
+package map;
 
 import java.util.Random;
 
 public class City {
+
     int x;
     int y;
 
@@ -43,6 +44,6 @@ public class City {
 
     @Override
     public String toString() {
-        return getX() + ", " + getY();
+        return "(" + getX() + ", " + getY() + ")";
     }
 }

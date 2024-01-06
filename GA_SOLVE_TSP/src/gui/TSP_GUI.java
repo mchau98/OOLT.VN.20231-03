@@ -18,11 +18,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
-import tsp.City;
-import tsp.GA;
-import tsp.Population;
-import tsp.TSP_GA;
-import tsp.TourManager;
+import genalgorithm.gen.GA;
+import genalgorithm.gen.Population;
+import genalgorithm.test.TSP_GA;
+import map.City;
+import map.TourManager;
 
 public class TSP_GUI {
 
@@ -222,8 +222,8 @@ public class TSP_GUI {
                     int lastY = (int) (lastCity.getY() * panelHeight / 500.0);
 
                     // Draw the line connecting the last city to the first city
-                    g.setColor(Color.BLUE); 
-                    g.drawLine(firstX + 3, firstY + 3, lastX + 3, lastY + 3); 
+                    g.setColor(Color.BLUE);
+                    g.drawLine(firstX + 3, firstY + 3, lastX + 3, lastY + 3);
                 }
             }
 

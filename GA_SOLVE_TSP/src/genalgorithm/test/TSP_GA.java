@@ -1,8 +1,11 @@
-package tsp;
+package genalgorithm.test;
 
 import java.util.Scanner;
-import gui.TSP_GUI;
 
+import genalgorithm.gen.GA;
+import genalgorithm.gen.Population;
+import map.City;
+import map.TourManager;
 
 public class TSP_GA {
 
@@ -31,7 +34,20 @@ public class TSP_GA {
     }
 
     public static void main(String[] args) {
-        // Khởi chạy GUI
-        TSP_GUI.main(args);
+        int numberOfCities = 0;
+        int populationSize = 0;
+        int generations = 0;
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter number of cities:");
+        numberOfCities = scanner.nextInt();
+        System.out.println("Enter population size:");
+        populationSize = scanner.nextInt();
+        System.out.println("Enter number of generations:");
+        generations = scanner.nextInt();
+
+        scanner.close();
+        
+        runGA(numberOfCities, populationSize, generations);
     }
 }
