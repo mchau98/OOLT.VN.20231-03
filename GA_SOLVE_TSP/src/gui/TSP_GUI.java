@@ -222,7 +222,7 @@ public class TSP_GUI {
                     int lastY = (int) (lastCity.getY() * panelHeight / 500.0);
 
                     // Draw the line connecting the last city to the first city
-                    g.setColor(Color.BLUE);
+                    g.setColor(Color.BLUE); 
                     g.drawLine(firstX + 3, firstY + 3, lastX + 3, lastY + 3); 
                 }
             }
