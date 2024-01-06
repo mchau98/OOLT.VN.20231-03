@@ -4,5 +4,5 @@
   - Nguyễn Thanh Nhật Bảo 20210096: Vẽ general class diagram, detailed class diagram; Tạo lớp TSP_GUI, lớp TSP_GA, lớp GA
   - Võ Việt Bắc 20205055: Vẽ general class diagram, usecase diagram
   - Nguyễn Minh Chiến 20215000: 0
-- Demo: 
+- Demo: [DemoVideo](https://drive.google.com/file/d/1PJ7OV42aqrlJNOiboWZhE5AdJ8_X2NgN/view?usp=drive_link][DemoVideo)
 
