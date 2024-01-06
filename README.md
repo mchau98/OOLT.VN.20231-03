@@ -1,8 +1,8 @@
-#OOLT.VN.20231-03
-Thành viên: 
+#OOLT.VN.20231-03 
+- Thành viên: 
   - Nguyễn Thị Minh Châu 20214997: Leader; Tạo lớp City, lớp Tour, lớp TourManagement, lớp Poppulation; Viết báo cáo; Làm slide
   - Nguyễn Thanh Nhật Bảo 20210096: Vẽ general class diagram, detailed class diagram; Tạo lớp TSP_GUI, lớp TSP_GA, lớp GA
   - Võ Việt Bắc 20205055: Vẽ general class diagram, usecase diagram
   - Nguyễn Minh Chiến 20215000: 0
-Demo: 
+- Demo: 
 
