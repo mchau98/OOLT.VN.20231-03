@@ -166,8 +166,8 @@ public class TSP_GUI {
                         + "\n   The program will generate a random set of cities, create an initial population, and evolve the population over the specified number of generations.\n\n"
                         + "5. Visualization:\n   The program visualizes the cities as red circles on the panel."
                         + "\n   The initial distance of the best tour in the initial population is displayed."
-                        + "6. Final Results:\n   Once the specified number of generations is reached, the final distance of the best tour is displayed."
-                        + "\n   The program continues to display the final state until you run the algorithm again.\n\n"
+                        + "\n 6. Final Results:\n   Once the specified number of generations is reached, the final distance of the best tour is displayed."
+                        + "\n   The program continues to display the final state until you run the algorithm again.\n"
                         + "7. Quit:\n   Click the \"Quit\" button to exit the program.\n\n");
 
         helpTextPane.setEditable(false);
@@ -176,13 +176,13 @@ public class TSP_GUI {
         btnHelp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Show the help dialog when the Help button is clicked
-                helpDialog.setSize(500, 600);
+                helpDialog.setSize(550, 500);
                 helpDialog.setLocationRelativeTo(frame);
                 helpDialog.setVisible(true);
             }
         });
 
-        btnHelp.setBounds(150, 120, 100, 25);
+        btnHelp.setBounds(155, 120, 100, 25);
         frame.getContentPane().add(btnHelp);
     }
 
