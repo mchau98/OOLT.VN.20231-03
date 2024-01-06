@@ -1,6 +1,6 @@
 package tsp.gen;
 
-import tsp.map.Tour;
+import map.Tour;
 
 public class Population {
 

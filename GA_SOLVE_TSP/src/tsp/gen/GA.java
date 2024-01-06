@@ -1,7 +1,7 @@
 package tsp.gen;
 
-import tsp.map.City;
-import tsp.map.Tour;
+import map.City;
+import map.Tour;
 
 public class GA {
 

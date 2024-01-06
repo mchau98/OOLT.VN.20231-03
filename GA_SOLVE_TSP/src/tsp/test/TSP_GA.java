@@ -2,10 +2,10 @@ package tsp.test;
 
 import java.util.Scanner;
 import gui.TSP_GUI;
+import map.City;
+import map.TourManager;
 import tsp.gen.GA;
 import tsp.gen.Population;
-import tsp.map.City;
-import tsp.map.TourManager;
 
 public class TSP_GA {
 

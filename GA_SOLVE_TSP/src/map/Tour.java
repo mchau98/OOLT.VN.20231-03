@@ -1,4 +1,4 @@
-package tsp.map;
+package map;
 
 import java.util.ArrayList;
 import java.util.Collections;
