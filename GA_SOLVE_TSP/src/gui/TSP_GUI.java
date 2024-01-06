@@ -235,6 +235,7 @@ public class TSP_GUI {
             public void run() {
                 try {
                     TSP_GUI window = new TSP_GUI();
+                    window.frame.setTitle("Genertic-algorithm TSP");
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
