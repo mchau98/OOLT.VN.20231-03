@@ -1,4 +1,4 @@
-package tsp;
+package tsp.gen;
 
 import tsp.map.Tour;
 

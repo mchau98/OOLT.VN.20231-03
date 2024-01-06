@@ -1,7 +1,9 @@
-package tsp;
+package tsp.test;
 
 import java.util.Scanner;
 import gui.TSP_GUI;
+import tsp.gen.GA;
+import tsp.gen.Population;
 import tsp.map.City;
 import tsp.map.TourManager;
 

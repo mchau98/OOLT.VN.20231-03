@@ -18,11 +18,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
-import tsp.GA;
-import tsp.Population;
-import tsp.TSP_GA;
+import tsp.gen.GA;
+import tsp.gen.Population;
 import tsp.map.City;
 import tsp.map.TourManager;
+import tsp.test.TSP_GA;
 
 public class TSP_GUI {
 
