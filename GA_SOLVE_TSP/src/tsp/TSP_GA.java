@@ -2,7 +2,8 @@ package tsp;
 
 import java.util.Scanner;
 import gui.TSP_GUI;
-
+import tsp.map.City;
+import tsp.map.TourManager;
 
 public class TSP_GA {
 

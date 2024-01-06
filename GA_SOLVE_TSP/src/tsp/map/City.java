@@ -1,8 +1,9 @@
-package tsp;
+package tsp.map;
 
 import java.util.Random;
 
 public class City {
+
     int x;
     int y;
 
