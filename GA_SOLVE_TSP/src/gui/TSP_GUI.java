@@ -223,7 +223,7 @@ public class TSP_GUI {
 
                     // Draw the line connecting the last city to the first city
                     g.setColor(Color.BLUE);
-                    g.drawLine(firstX + 3, firstY + 3, lastX + 3, lastY + 3);
+                    g.drawLine(firstX + 3, firstY + 3, lastX + 3, lastY + 3); 
                 }
             }
 
