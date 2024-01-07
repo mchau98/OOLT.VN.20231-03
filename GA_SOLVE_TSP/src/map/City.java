@@ -16,13 +16,6 @@ public class City {
         setX(rand_int1);
         setY(rand_int2);
     }
-
-    // Constructs a city at chosen x, y location
-    public City(int x, int y) {
-        setX(x);
-        setY(y);
-    }
-
     // Gets city's x coordinate
     public int getX() {
         return this.x;
@@ -50,10 +43,5 @@ public class City {
         double distance = Math.sqrt((xDistance * xDistance) + (yDistance * yDistance));
 
         return distance;
-    }
-
-    @Override
-    public String toString() {
-        return "(" + getX() + ", " + getY() + ")";
     }
 }
