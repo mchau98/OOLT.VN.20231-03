@@ -18,10 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
-import genalgorithm.gen.GA;
-import genalgorithm.gen.Population;
-import genalgorithm.test.TSP_GA;
+import genalgorithm.GA;
+import genalgorithm.TSP_GA;
 import map.City;
+import map.Population;
 import map.TourManager;
 
 public class TSP_GUI {
