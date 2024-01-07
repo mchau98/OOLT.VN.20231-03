@@ -1,6 +1,7 @@
-package genalgorithm.gen;
+package genalgorithm;
 
 import map.City;
+import map.Population;
 import map.Tour;
 
 public class GA {
