@@ -1,6 +1,4 @@
-package genalgorithm.gen;
-
-import map.Tour;
+package map;
 
 public class Population {
 
