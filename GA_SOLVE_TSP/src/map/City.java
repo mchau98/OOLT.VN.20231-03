@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class City {
 
-    int x;
-    int y;
+    private int x;
+    private int y;
 
     // Constructs a randomly placed city
     public City() {
@@ -13,14 +13,14 @@ public class City {
 
         int rand_int1 = rand.nextInt(1, 500);
         int rand_int2 = rand.nextInt(1, 500);
-        this.x = rand_int1;
-        this.y = rand_int2;
+        setX(rand_int1);
+        setY(rand_int2);
     }
 
     // Constructs a city at chosen x, y location
     public City(int x, int y) {
-        this.x = x;
-        this.y = y;
+        setX(x);
+        setY(y);
     }
 
     // Gets city's x coordinate
@@ -31,6 +31,16 @@ public class City {
     // Gets city's y coordinate
     public int getY() {
         return this.y;
+    }
+
+    // Sets city's x coordinate
+    private void setX(int x) {
+        this.x = x;
+    }
+
+    // Sets city's y coordinate
+    private void setY(int y) {
+        this.y = y;
     }
 
     // Gets the distance to given city
