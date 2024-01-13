@@ -247,7 +247,7 @@ public class TSP_GUI {
         JDialog errorDialog = new JDialog(frame, "Error", Dialog.ModalityType.APPLICATION_MODAL);
         JLabel errorMessageLabel = new JLabel(message);
         errorDialog.add(errorMessageLabel);
-        errorDialog.setSize(300, 100);
+        errorDialog.setSize(600, 100);
         errorDialog.setLocationRelativeTo(frame);
         errorDialog.setVisible(true);
     }
