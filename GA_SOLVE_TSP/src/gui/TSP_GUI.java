@@ -91,47 +91,59 @@ public class TSP_GUI {
         JButton btnRun = new JButton("Run GA");
         btnRun.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                numberOfCities = Integer.parseInt(textFieldCities.getText());
-                populationSize = Integer.parseInt(textFieldPopSize.getText());
-                generations = Integer.parseInt(textFieldGenerations.getText());
-                lblInitialDistance.setText("Initial Distance:" + 0);
-                lblFinalDistance.setText("Final Distance:" + 0);
+                try {
+                    numberOfCities = Integer.parseInt(textFieldCities.getText());
+                    populationSize = Integer.parseInt(textFieldPopSize.getText());
+                    generations = Integer.parseInt(textFieldGenerations.getText());
 
-                // Tạo ngẫu nhiên các thành phố
-                TourManager.clearCities(); // Xóa các thành phố cũ trước khi thêm mới
-                for (int i = 0; i < numberOfCities; i++) {
-                    City city = new City();
-                    TourManager.addCity(city);
-                }
-                // Khởi tạo quần thể
-                pop = new Population(populationSize, true);
-                cityPanel.repaint();
-                // System.out.println("Initial distance: " + pop.getFittest().getDistance());
-                lblInitialDistance.setText("Initial Distance:" + pop.getFittest().getDistance());
-                // Refresh the CityPanel to trigger the paintComponent method
-
-                Timer timer = new Timer(10, new ActionListener() {
-                    private int currentGeneration = 0;
-
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (currentGeneration < generations) {
-                            // Tiến hóa quần thể for one generation
-                            pop = GA.evolvePopulation(pop);
-                            // Refresh the CityPanel to trigger the paintComponent method
-                            cityPanel.repaint();
-                            currentGeneration++;
-                        } else {
-                            // Stop the timer after reaching the specified number of generations
-                            ((Timer) e.getSource()).stop();
-                            lblFinalDistance.setText("Final Distance:" + pop.getFittest().getDistance());
-                        }
+                    // Additional validation for non-positive values
+                    if (numberOfCities <= 0 || populationSize <= 0 || generations <= 0) {
+                        showErrorDialog(
+                                "Please enter positive values for Number of Cities, Population Size, and Generations.");
+                        return;
                     }
-                });
 
-                // Start the timer
-                timer.start();
+                    // Tạo ngẫu nhiên các thành phố
+                    TourManager.clearCities(); // Xóa các thành phố cũ trước khi thêm mới
+                    for (int i = 0; i < numberOfCities; i++) {
+                        City city = new City();
+                        TourManager.addCity(city);
+                    }
 
+                    cityPanel.repaint();
+
+                    // Khởi tạo quần thể
+                    pop = new Population(populationSize, true);
+                    cityPanel.repaint();
+                    lblInitialDistance.setText("Initial Distance:" + pop.getFittest().getDistance());
+                    lblFinalDistance.setText("Final Distance:" + 0);
+
+                    Timer timer = new Timer(10, new ActionListener() {
+                        private int currentGeneration = 0;
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            if (currentGeneration < generations) {
+                                // Tiến hóa quần thể for one generation
+                                pop = GA.evolvePopulation(pop);
+                                // Refresh the CityPanel to trigger the paintComponent method
+                                cityPanel.repaint();
+                                currentGeneration++;
+                            } else {
+                                // Stop the timer after reaching the specified number of generations
+                                ((Timer) e.getSource()).stop();
+                                lblFinalDistance.setText("Final Distance:" + pop.getFittest().getDistance());
+                            }
+                        }
+                    });
+
+                    // Start the timer
+                    timer.start();
+                } catch (NumberFormatException ex) {
+                    // Handle the exception when parsing to integer fails
+                    showErrorDialog(
+                            "Please enter valid numbers for Number of Cities, Population Size, and Generations.");
+                }
             }
         });
 
@@ -228,6 +240,16 @@ public class TSP_GUI {
             }
 
         }
+    }
+
+    // Method to show error dialog
+    private void showErrorDialog(String message) {
+        JDialog errorDialog = new JDialog(frame, "Error", Dialog.ModalityType.APPLICATION_MODAL);
+        JLabel errorMessageLabel = new JLabel(message);
+        errorDialog.add(errorMessageLabel);
+        errorDialog.setSize(300, 100);
+        errorDialog.setLocationRelativeTo(frame);
+        errorDialog.setVisible(true);
     }
 
     public static void main(String[] args) {
