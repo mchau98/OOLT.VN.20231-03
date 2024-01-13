@@ -9,6 +9,9 @@
 | Võ Việt Bắc 20205055           | Vẽ general class diagram, usecase diagram                                                                |
 | Nguyễn Minh Chiến 20215000     |                                                                                                          |
 
+## Demo:
+
+- [DemoVideo](https://drive.google.com/file/d/1PJ7OV42aqrlJNOiboWZhE5AdJ8_X2NgN/view?usp=drive_link][DemoVideo)
 ## Class diagram general:
 
 ![Alt text](GA_SOLVE_TSP/design/general_class_diagram.png)
@@ -21,6 +24,3 @@
 
 ![Alt text](GA_SOLVE_TSP/design/usecase-diagram.png)
 
-## Demo:
-
-- [DemoVideo](https://drive.google.com/file/d/1PJ7OV42aqrlJNOiboWZhE5AdJ8_X2NgN/view?usp=drive_link][DemoVideo)
