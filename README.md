@@ -6,7 +6,7 @@
 | ------------------------------ | -------------------------------------------------------------------------------------------------------- |
 | Nguyễn Thị Minh Châu 20214997  | **Leader**; Tạo lớp City, lớp Tour, lớp TourManagement, lớp Poppulation, lớp GA; Viết báo cáo; Làm slide |
 | Nguyễn Thanh Nhật Bảo 20210096 | Vẽ general class diagram, detailed class diagram; Tạo lớp TSP_GUI, lớp TSP_GA                            |
-| Võ Việt Bắc 20205055           | Vẽ general class diagram, usecase diagram                                                                |
+| Võ Việt Bắc 20205055           |                                                             |
 | Nguyễn Minh Chiến 20215000     |                                                                                                          |
 
 ## Demo:
